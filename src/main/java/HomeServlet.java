@@ -12,11 +12,12 @@ public class HomeServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
 
-        Integer count = (Integer) session.getAttribute("count");
+        Integer count = (Integer) session.getAttribute("count");   //условно счетчик посещений данного клиента
 
         if (count == null) {
-            session.setAttribute("count", 1);
             count = 1;
+            session.setAttribute("count", count);
+
         } else {
             session.setAttribute("count", count + 1);
         }
